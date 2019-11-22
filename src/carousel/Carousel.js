@@ -291,6 +291,14 @@ export default class Carousel extends Component {
         return this._currentContentOffset;
     }
 
+    // MeetMindful added method to overcome an existing animation focusing on
+    // not selected active item
+    _MM_hackSetActive  = (value) => {
+        this._activeItem = value;
+        this.forceUpdate();
+        this._hackActiveSlideAnimation(value, value, true);
+    }
+
     _setScrollHandler(props) {
       // Native driver for scroll events
       const scrollEventConfig = {
